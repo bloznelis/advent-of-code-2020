@@ -1,9 +1,8 @@
-package io.bloznelis.aoc2020.util
+package io.bloznelis.aoc2020
 
 import java.nio.file.{Files, Paths}
 
-object Util {
-
+package object util {
   def readFileLines(path: String): List[String] = {
     import scala.jdk.CollectionConverters._
 

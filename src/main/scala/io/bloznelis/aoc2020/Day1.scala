@@ -1,6 +1,6 @@
 package io.bloznelis.aoc2020
 
-import io.bloznelis.aoc2020.util.Util.readFileLines
+import io.bloznelis.aoc2020.util.readFileLines
 
 import scala.annotation.tailrec
 
