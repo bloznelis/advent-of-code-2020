@@ -12,26 +12,26 @@ object Day1 {
     (firstPartAnswer(entries), secondPartAnswer(entries))
   }
 
-  def firstPartAnswer(stars: List[Int]): Int = {
-    val indexedStars = stars.zipWithIndex
+  def firstPartAnswer(entries: List[Int]): Int = {
+    val indexedEntries = entries.zipWithIndex
 
     @tailrec
     def go(current: (Int, Int), remaining: List[Int]): Int = remaining match {
-      case Nil          => go(indexedStars(current._2 + 1), stars)
+      case Nil          => go(indexedEntries(current._2 + 1), entries)
       case head :: tail => if (head + current._1 == 2020) head * current._1 else go(current, tail)
     }
 
-    go(indexedStars.head, stars)
+    go(indexedEntries.head, entries)
   }
 
   /**
    * Not as efficient as first part, but less ugly
    */
-  def secondPartAnswer(stars: List[Int]): Int =
+  def secondPartAnswer(entries: List[Int]): Int =
     (for {
-      star1 <- stars
-      star2 <- stars
-      star3 <- stars
-      answer <- if (star1 + star2 + star3 == 2020) List(star1 * star2 * star3) else List.empty
+      entry1 <- entries
+      entry2 <- entries
+      entry3 <- entries
+      answer <- if (entry1 + entry2 + entry3 == 2020) List(entry1 * entry2 * entry3) else List.empty
     } yield answer).head
 }
