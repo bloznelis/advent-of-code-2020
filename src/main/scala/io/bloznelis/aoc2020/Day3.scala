@@ -6,8 +6,8 @@ object Day3 {
 
   case class SlopeMap(rows: List[LazyList[Cell]])
   enum Cell {
-    case Tree extends Cell
-    case Empty extends Cell
+    case Tree
+    case Empty
   }
 
   def answers: (Int, Int) = {
