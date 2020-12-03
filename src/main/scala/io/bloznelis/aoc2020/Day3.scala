@@ -35,14 +35,15 @@ object Day3 {
 
   def countAllPathsTrees(slopeMap: SlopeMap): Int = {
     val range = (0 until slopeMap.rows.size)
-    def count = countPathTrees(slopeMap, _)
-    def toRight(by: Int) = range.map(rowIdx => (rowIdx * by, rowIdx))
+    val count = countPathTrees(slopeMap, _)
+    val toRight = (i: Int) => range.map(rowIdx => (rowIdx * i, rowIdx))
+    val countToRight = toRight andThen count
 
     Vector(
-      count(toRight(1)),
-      count(toRight(3)),
-      count(toRight(5)),
-      count(toRight(7)),
+      countToRight(1),
+      countToRight(3),
+      countToRight(5),
+      countToRight(7),
       count(range.collect{ case rowIdx if rowIdx * 2 <= slopeMap.rows.size => (rowIdx, rowIdx * 2) })
     ).reduce(_ * _)
   }
