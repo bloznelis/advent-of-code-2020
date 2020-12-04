@@ -20,14 +20,13 @@ object Day4 {
   def answer(): Int =
     readFileAsString("data/input/day4.txt")
       .split("\n\n")
-      .map(_.replaceAll("\n", " "))
       .map(parsePassport)
       .flatten
       .size
 
   def parsePassport(line: String): Option[Passport] = {
     def parse(key: String) =
-      line.split(" ").map(parseField(_, key)).collectFirst{ case Some(value) => value }
+      line.split(" |\n").map(parseField(_, key)).collectFirst{ case Some(value) => value }
 
     for {
       byr <- parse("byr")
