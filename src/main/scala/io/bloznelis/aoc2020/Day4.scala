@@ -6,7 +6,6 @@ import java.nio.file.{Files, Paths}
 import scala.util.Try
 
 object Day4 {
-
   case class Passport(
     byr: String,
     iyr: String,
@@ -21,13 +20,12 @@ object Day4 {
   def answer(): Int =
     readFileAsString("data/input/day4.txt")
       .split("\n\n")
-      .map(stringBlock => stringBlock.replaceAll("\n", " "))
+      .map(_.replaceAll("\n", " "))
       .map(parsePassport)
       .flatten
       .size
 
   def parsePassport(line: String): Option[Passport] = {
-
     def parse(key: String) =
       line.split(" ").map(parseField(_, key)).collectFirst{ case Some(value) => value }
 
