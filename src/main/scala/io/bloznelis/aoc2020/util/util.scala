@@ -8,4 +8,7 @@ package object util {
 
     Files.readAllLines(Paths.get(path)).asScala.toList
   }
+
+  def readFileAsString(path: String): String =
+    new String(Files.readAllBytes(Paths.get(path)))
 }
