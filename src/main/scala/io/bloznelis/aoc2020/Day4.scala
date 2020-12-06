@@ -1,6 +1,6 @@
 package io.bloznelis.aoc2020
 
-import io.bloznelis.aoc2020.util.{readFileAsString, readFileLines}
+import io.bloznelis.aoc2020.util.{readBatches, readFileAsString, readFileLines}
 
 import java.nio.file.{Files, Paths}
 import scala.util.Try
@@ -18,8 +18,7 @@ object Day4 {
   )
 
   def answer(): Int =
-    readFileAsString("data/input/day4.txt")
-      .split("\n\n")
+    readBatches("data/input/day4.txt")
       .map(parsePassport)
       .flatten
       .size
