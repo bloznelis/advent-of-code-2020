@@ -22,18 +22,21 @@ object Day5 {
   def findSeatID(instructions: Instructions): Int =
     binarySearch(instructions.row, 128) * 8 + binarySearch(instructions.column, 8)
 
-  def parse(line: String): Instructions = Instructions.tupled(
-    line
-      .toCharArray
-      .map {
-        case 'F' => Instruction.Lower
-        case 'B' => Instruction.Upper
-        case 'L' => Instruction.Lower
-        case 'R' => Instruction.Upper
-      }
-      .toVector
-      .splitAt(7)
-  )
+  def parse(line: String): Instructions = {
+    val r =
+      line
+        .toCharArray
+        .map {
+          case 'F' => Instruction.Lower
+          case 'B' => Instruction.Upper
+          case 'L' => Instruction.Lower
+          case 'R' => Instruction.Upper
+        }
+        .toVector
+        .splitAt(7)
+
+    Instructions(r._1, r._2)
+  }
 
   def binarySearch(instructions: Vector[Instruction], upper: Int): Int =
     instructions.foldLeft((0, upper)){ (current, instruction) =>
